@@ -1,0 +1,22 @@
+function palindrome(str) {
+
+  // regular expression for to remove non-AlphaNum characters
+ var regEx = /[^A-Za-z0-9]/g;
+
+ // set all letters to lower case
+ str = str.toLowerCase().replace(regEx, '');
+
+ var len = str.length;
+ //loop through half the string
+ for (var i = 0; i < len/2; i++) {
+   // if str[i] isnt equal to its reflected position
+   if (str[i] !== str[len - 1 - i]) {
+      // it is not a palindrome, and returns false
+       return false;
+   }
+ }
+ // after looping return true
+ return true;
+}
+//test if function works
+(palindrome("Was it a car or a cat I saw?"));
