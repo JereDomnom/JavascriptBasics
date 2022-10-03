@@ -1,0 +1,34 @@
+function convertToRoman(num) {
+  //converter only works up to 3999, add more to the key for converting larger numbers
+
+  //check if value inputted is a number
+if (typeof num !== 'number') 
+return false; 
+
+//declare var digits which splits num into substrings 
+var digits = String(+num).split(""),
+
+//key for converting into roman numerals
+// all digits with  0s are null since they are defaultly included in the roman numeral
+key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+"","I","II","III","IV","V","VI","VII","VIII","IX"],
+
+//declare roman_num & i
+roman_num = "",
+i = 3;
+
+// since 0 is considered false in javaScript
+// loop while i decreases until hitting 0
+// i is decreased so it starts at 2
+while (i--)
+// set roman_num to key[value]
+//where value = the popped number added to i*10
+// and value should be the corresponding roman numeral in the key
+roman_num = (key[+digits.pop() + (i * 10)] || "") + roman_num;
+
+//once i==0 return 
+// key tester 
+//console.log(convertToRoman(13));
+return Array(+digits.join("") + 1).join("M") + roman_num;
+}
